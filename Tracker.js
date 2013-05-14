@@ -55,7 +55,7 @@ var _gaq = _gaq || [];
 			this.trackEvent = function (link, category, action, label, target, callback) {
 				if (settings.account) {
 					_gaq.push(['_trackEvent', category, action, label]);
-					if (target == "_blank")
+					if (link && target == "_blank")
 						window.open(link);
 					else if (link)
 						setTimeout('document.location = "' + link + '"', 100);

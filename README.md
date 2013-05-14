@@ -32,9 +32,10 @@ tracker.trackEvent(link, category, action, label, target, callback)
 ```
 
 Parameters for the trackevent : 
-- __link__ : Link to redirect after the tracking
+- __link__ : Link to redirect after the tracking (optional)
 - __category__ : The ga category
 - __action__ : The ga action
 - __label__ : the ga label
-- __target__ : set to '_blank' if you want to open the link in a new window
-- __callback__ : you can provide a custom function to execute when the tracking is done
+- __target__ : set to '_blank' if you want to open the link in a new window (optional)
+- __callback__ : you can provide a custom function to execute when the tracking is done (optional)
+Optional parameters cna be set to null
