@@ -5,6 +5,13 @@ Google analytics made easy
 
 ### Simple tracking using only html links
 
+First, create the tracker
+```javascript
+var tracker = $.Tracker($('body'),{
+  account: 'your ga id here'
+});
+```
+
 Track an event 
 ```html
 <a href="/newpage" class="trackevent" data-tracking-category="your tracking category" data-tracking-action="your tracking action" data-tracking-label="your tracking label">Link</a>
@@ -15,12 +22,6 @@ Track a pageview
 ```
 
 ### Dynamic events using javascript
-First, create the tracker
-```javascript
-var tracker = $.Tracker($('body'),{
-  account: 'your ga id here'
-});
-```
 Dynamic trackpageview
 ```javascript
 tracker.trackPageView('page');
