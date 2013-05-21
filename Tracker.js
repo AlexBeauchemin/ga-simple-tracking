@@ -14,6 +14,8 @@ var _gaq = _gaq || [];
 				account: null
 			}, options || {});
 
+			var self = this;
+
 			var initialize = function () {
 				if (settings.account) {
 					_gaq.push(['_setAccount', settings.account]);
@@ -32,7 +34,6 @@ var _gaq = _gaq || [];
 			};
 
 			var addEvents = function () {
-				var self = this;
 				el.find('.trackevent').on("click", function () {
 					var $this = $(this);
 					var category = $this.attr('data-tracking-category');
