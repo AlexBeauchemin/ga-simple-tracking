@@ -5,6 +5,8 @@ Google analytics made easy
 
 ### Simple tracking using only html links
 
+*You don't need to include the google analytics javascript library, only include Tracker.js in your project and you're good to go!
+
 First, create the tracker
 ```javascript
 var tracker = $.Tracker($('body'),{
