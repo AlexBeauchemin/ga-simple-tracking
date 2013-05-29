@@ -8,7 +8,8 @@ Google analytics made easy
 First, create the tracker
 ```javascript
 var tracker = $.Tracker($('body'),{
-  account: 'your ga id here'
+  account: 'your ga id here',
+  domainName: 'domain name' //optional , remove this option if your not sure what it does
 });
 ```
 

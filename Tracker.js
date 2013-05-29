@@ -7,34 +7,34 @@
 
 var _gaq = _gaq || [];
 
-(function ($) {
+(function($){
 	$.extend({
-		Tracker: function (el, options) {
+		Tracker: function(el,options){
 			var settings = $.extend({
-				account: null
+				account: null,
+				domainName: null
 			}, options || {});
 
 			var self = this;
 
-			var initialize = function () {
-				if (settings.account) {
+			var initialize = function(){
+				if(settings.account) {
 					_gaq.push(['_setAccount', settings.account]);
+					if(settings.domainName)
+						_gaq.push(['_setDomainName', settings.domainName]);
 
-					(function () {
-						var ga = document.createElement('script');
-						ga.type = 'text/javascript';
-						ga.async = true;
-						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-						var s = document.getElementsByTagName('script')[0];
-						s.parentNode.insertBefore(ga, s);
+					(function() {
+							var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+							ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+							var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 					})();
 				}
 
 				addEvents();
 			};
 
-			var addEvents = function () {
-				el.find('.trackevent').on("click", function () {
+			var addEvents = function(){
+				el.find('.trackevent').on("click",function(){
 					var $this = $(this);
 					var category = $this.attr('data-tracking-category');
 					var action = $this.attr('data-tracking-action');
@@ -42,10 +42,10 @@ var _gaq = _gaq || [];
 					var link = $this.attr("href");
 					var target = $this.attr('target');
 
-					self.trackEvent(link, category, action, label, target);
+					self.trackEvent(link,category, action, label, target);
 					return false;
 				});
-				el.find('.trackpageview').on("click", function () {
+				el.find('.trackpageview').on("click",function(){
 					var $this = $(this);
 					var page = $this.data('tracking-page');
 
@@ -53,21 +53,21 @@ var _gaq = _gaq || [];
 				});
 			};
 
-			this.trackEvent = function (link, category, action, label, target, callback) {
-				if (settings.account) {
-					_gaq.push(['_trackEvent', category, action, label]);
-					if (link && target == "_blank")
-						window.open(link);
-					else if (link)
-						setTimeout('document.location = "' + link + '"', 100);
-					if (callback) {
-						setTimeout(callback, 100);
+			this.trackEvent = function (link, category, action, label, target, callback){
+				if(settings.account) {
+					_gaq.push(['_trackEvent', category,  action, label]);
+					if(target == "_blank")
+							window.open(link);
+					else if(link)
+							setTimeout('document.location = "' + link + '"', 100);
+					if(callback){
+							setTimeout(callback,100);
 					}
 				}
 			};
 
-			this.trackPageView = function (page) {
-				if (settings.account) {
+			this.trackPageView = function (page){
+				if(settings.account) {
 					_gaq.push(['_trackPageview', page]);
 				}
 			};
