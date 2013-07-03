@@ -3,17 +3,19 @@ ga-simple-tracking
 
 Google analytics made easy 
 
-### Simple tracking using only html links
-
 *You don't need to include the google analytics javascript library, only include Tracker.js in your project and you're good to go!
 
-First, create the tracker
+First, create the tracker 
+
 ```javascript
 var tracker = $.Tracker($('body'),{
   account: 'your ga id here',
   domainName: 'domain name' //optional , remove this option if your not sure what it does
 });
 ```
+*The first parameter "$('body')" is the container that is targeted to find the tracking elements. Everything outside this container will not be tracked.*
+
+### Simple tracking using only html links
 
 Track an event 
 ```html
