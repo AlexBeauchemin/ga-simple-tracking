@@ -35,12 +35,12 @@ var _gaq = _gaq || [];
 
 			var addEvents = function(){
 				el.find('.trackevent').on("click",function(){
-					var $this = $(this);
-					var category = $this.attr('data-tracking-category');
-					var action = $this.attr('data-tracking-action');
-					var label = $this.attr('data-tracking-label');
-					var link = $this.attr("href");
-					var target = $this.attr('target');
+					var $this = $(this),
+                        category = $this.attr('data-tracking-category'),
+                        action = $this.attr('data-tracking-action'),
+                        label = $this.attr('data-tracking-label'),
+                        link = $this.attr("href"),
+                        target = $this.attr('target');
 
 					self.trackEvent(link,category, action, label, target);
 					return false;
@@ -68,7 +68,10 @@ var _gaq = _gaq || [];
 
 			this.trackPageView = function (page){
 				if(settings.account) {
-					_gaq.push(['_trackPageview', page]);
+					if(page)
+                        _gaq.push(['_trackPageview', page]);
+                    else
+                        _gaq.push(['_trackPageview']);
 				}
 			};
 
